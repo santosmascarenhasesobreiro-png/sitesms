@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil – SMS</title>
+
+  <style>
+    /* ===== Fundo do site ===== */
+    body{
+  margin:0; padding:0;
+  font-family:Georgia,serif; color:#3f3c35;
+  background:
+    linear-gradient(to bottom, rgba(126,115,82,.35), rgba(41,38,38,.15)),
+    url('SMS ADV.jpg') center/cover fixed no-repeat;
+
+  /* Centralização vertical + horizontal */
+  display:flex;
+  justify-content:center;   /* eixo X (horizontal) */
+  align-items:center;       /* eixo Y (vertical) */
+  min-height:100vh;         /* ocupa altura inteira */
+}
+
+.perfil-advogado{
+  display:grid; grid-template-columns:340px 1fr; gap:28px;
+  max-width:1100px;
+  padding:20px; border-radius:14px;
+  background:rgba(214,207,183,.96);
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+  border:1px solid rgba(0,0,0,.08);
+}
+
+    /* ===== Foto com efeito (desktop) ===== */
+    .perfil-foto {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,.22);
+      /* proporção agradável para retrato */
+      aspect-ratio: 7 / 10;
+      width: 100%;
+      height: auto;
+    }
+    .perfil-foto img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: opacity .35s ease;
+    }
+    .perfil-foto img:last-child { opacity: 0; }
+    .perfil-foto:hover img:first-child { opacity: 0; }
+    .perfil-foto:hover img:last-child  { opacity: 1; }
+
+    /* ===== Texto ===== */
+    .perfil-texto { align-self: start; }
+    .perfil-texto h2{
+      margin: 4px 0 10px;
+      font-size: 2rem;
+      color: #4a473f;
+      letter-spacing:.2px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    }
+    .perfil-texto p{
+      margin: 0 0 12px;
+      font-size: 1.06rem;
+      line-height: 1.65;
+      color: #2f2e2a;
+      text-align: left; /* leitura melhor que 'justify' */
+    }
+
+    /* ===== Instagram ===== */
+    .instagram-link{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top: 10px;
+      font-weight: 600;
+      color:#684c4c;
+      text-decoration:none;
+    }
+    .instagram-link:hover{ text-decoration:underline; }
+    .instagram-link svg{ fill:#e4405f; }
+
+    /* ===== FAB ===== */
+    .menu-fab{ position: fixed; right: 24px; bottom: 24px; z-index: 9999; font-family: Arial, sans-serif; }
+    .fab-button{
+      background:#918e7d; color:#fff; border:0; border-radius:50%;
+      width:60px; height:60px; font-size:26px; cursor:pointer;
+      box-shadow:0 6px 14px rgba(0,0,0,.25);
+      transition: transform .25s ease, background-color .25s ease;
+    }
+    .fab-button:hover{ transform: scale(1.06); background:#7f7b69; }
+    .fab-menu{
+      display:none; position:absolute; right:0; bottom:72px; min-width: 150px;
+      background:#ffffffee; border-radius:10px; padding:8px 0;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+    .fab-menu a{ display:block; padding:10px 16px; color:#333; text-decoration:none; font-weight:600; }
+    .fab-menu a:hover{ background:#f3f3f3; }
+    .fab-open .fab-menu{ display:flex; flex-direction:column; }
+
+    /* ===== Tablets (até 900px) ===== */
+    @media (max-width: 900px){
+      .perfil-advogado{
+        grid-template-columns: 300px 1fr;
+        gap: 22px;
+        margin: 24px 16px;
+        padding: 18px;
+      }
+      .perfil-texto h2{ font-size: 1.8rem; }
+      .perfil-texto p { font-size: 1.02rem; }
+    }
+
+    /* ===== Celulares (até 600px) ===== */
+    @media (max-width: 600px){
+      /* fundo não fixo e com cover para desempenho */
+      body{ background-attachment: scroll; background-size: cover; }
+
+      /* card em coluna única */
+      .perfil-advogado{
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 14px 10px 24px;
+        padding: 14px;
+        box-shadow: 0 8px 18px rgba(0,0,0,.28);
+        border-radius: 12px;
+      }
+
+      /* foto ocupa toda a largura e mantém proporção */
+      .perfil-foto{ aspect-ratio: 4 / 5; border-radius: 10px; }
+      /* desativa efeito hover em telas touch */
+      @media (hover: none){
+        .perfil-foto img:last-child{ display:none; }
+        .perfil-foto img:first-child{ opacity:1 !important; }
+      }
+
+      /* tipografia mais enxuta e sem sombras */
+      .perfil-texto h2{
+        font-size: 1.35rem;
+        line-height: 1.25;
+        text-shadow: none;
+        text-align: left;
+      }
+      .perfil-texto p{
+        font-size: .98rem;
+        line-height: 1.6;
+        text-shadow: none;
+        margin-bottom: 10px;
+      }
+
+      .instagram-link{ font-size: .98rem; }
+
+      /* FAB menor e mais afastado */
+      .fab-button{ width: 50px; height: 50px; font-size: 22px; }
+      .menu-fab{ right: 14px; bottom: 14px; }
+      .fab-menu a{ padding: 9px 14px; font-size: .95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Perfil -->
+  <section class="perfil-advogado">
+    <div class="perfil-foto" aria-label="Foto da Estagiária com efeito hover">
+      <img src="gabriela 01.jpg" alt="Estagiária Gabriela Rocha da Silva">
+      <img src="gabriela 02.jpg" alt="Estagiária Gabriela Rocha da Silva (hover)">
+    </div>
+
+    <div class="perfil-texto">
+      <h2>Estagiária Gabriela Rocha da Silva</h2>
+      <p>Estagiária dedicada, com experiência em elaboração de peças processuais e atendimento ao cliente.</p>
+      <p>Atua no suporte jurídico com foco em triagem e orientação clara, contribuindo para a organização e eficiência do escritório.</p>
+      <p>Comprometida com o aprendizado contínuo e a excelência no atendimento, está sempre pronta para auxiliar em diferentes áreas do Direito.</p>
+
+      <a href="https://www.instagram.com/smsadvocaciaoficial" target="_blank" rel="noopener" class="instagram-link" aria-label="Instagram da SMS Advocacia">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 2.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-.75a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0z"/></svg>
+        @smsadvocaciaoficial
+      </a>
+    </div>
+  </section>
+
+  <!-- FAB -->
+  <div class="menu-fab" id="fab" aria-label="Menu flutuante">
+    <button class="fab-button" aria-haspopup="true" aria-expanded="false" aria-controls="fab-menu" aria-label="Abrir menu de navegação" onclick="toggleFab()">☰</button>
+    <nav id="fab-menu" class="fab-menu" role="menu" aria-hidden="true">
+      <a href="index.html" role="menuitem">Início</a>
+      <a href="equipe.html" role="menuitem">Equipe</a>
+    </nav>
+  </div>
+
+  <script>
+    function toggleFab() {
+      const fab = document.getElementById('fab');
+      const menu = document.getElementById('fab-menu');
+      fab.classList.toggle('fab-open');
+      const isOpen = fab.classList.contains('fab-open');
+      menu.setAttribute('aria-hidden', !isOpen);
+      fab.querySelector('button').setAttribute('aria-expanded', isOpen);
+    }
+  </script>
+</body>
+</html>

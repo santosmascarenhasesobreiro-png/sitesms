@@ -1,0 +1,248 @@
+<!-- Estilos Gerais e do Site -->
+<style>
+  /* Fundo do site inteiro com degradê sobre imagem */
+body{
+  margin:0; padding:0;
+  font-family:Georgia,serif; color:#3f3c35;
+  background:
+    linear-gradient(to bottom, rgba(126,115,82,.35), rgba(41,38,38,.15)),
+    url('SMS ADV.jpg') center/cover fixed no-repeat;
+
+  /* Centralização vertical + horizontal */
+  display:flex;
+  justify-content:center;   /* eixo X (horizontal) */
+  align-items:center;       /* eixo Y (vertical) */
+  min-height:100vh;         /* ocupa altura inteira */
+}
+
+.perfil-advogado{
+  display:grid; grid-template-columns:340px 1fr; gap:28px;
+  max-width:1100px;
+  padding:20px; border-radius:14px;
+  background:rgba(214,207,183,.96);
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+  border:1px solid rgba(0,0,0,.08);
+
+
+    /* Degradê + cor semitransparente */
+    background-color: #918e7d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.75);
+         }
+
+  /* Container da foto com efeito hover */
+  .perfil-foto {
+    position: relative;
+    flex-shrink: 0;
+    width: 350px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .perfil-foto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Imagens da foto (original e hover) */
+  .perfil-foto img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease;
+  }
+  .perfil-foto img:last-child {
+    opacity: 0;
+  }
+  .perfil-foto:hover img:first-child {
+    opacity: 0;
+  }
+  .perfil-foto:hover img:last-child {
+    opacity: 1;
+  }
+
+  /* Texto do perfil */
+  .perfil-texto {
+    flex: 1;
+    animation: fadeInUp 1s ease forwards;
+  }
+  .perfil-texto h2 {
+    margin-bottom: 15px;
+    font-size: 2em;
+    color: #d8d3b2; /* Cor de destaque mais elegante */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+  }
+  .perfil-texto p {
+    font-size: 1.2em;
+    line-height: 1.7;
+    text-align: justify;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+  }
+  .perfil-texto h2:hover,
+  .perfil-texto p:hover {
+    transform: scale(1.05);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.85);
+    cursor: default;
+  }
+
+  /* Animação fade-in para texto */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Link Instagram */
+  .instagram-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #eae4c3;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.instagram-link:hover,
+.instagram-link:focus {
+  color: #fff1b8;
+  outline: none;
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+.instagram-link svg {
+  vertical-align: middle;
+  margin-right: 8px;
+  fill: #e4405f;  /* cor rosa do símbolo Instagram */
+  transition: fill 0.3s ease;
+}
+
+.instagram-link:hover svg,
+.instagram-link:focus svg {
+  fill: #ac1344; /* rosa mais claro no hover */
+}
+  /* Botão flutuante circular (menu FAB) */
+  .menu-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Botão principal */
+  .fab-button {
+    background-color: #918e7d;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .fab-button:hover {
+    background-color: #918e7d;
+    transform: scale(1.1);
+  }
+
+  /* Menu escondido */
+  .fab-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background-color: #ffffffee;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 8px 0;
+    min-width: 140px;
+  }
+
+  /* Links do menu */
+  .fab-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+  .fab-menu a:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Menu visível */
+  .fab-open .fab-menu {
+    display: flex;
+  }
+</style>
+
+<!-- Seção Perfil do Advogado -->
+<!-- Seção Perfil da Advogada -->
+<section class="perfil-advogado">
+  <div class="perfil-foto" aria-label="Foto da Advogada com efeito hover">
+    <img src="jessica 01.jpg" alt="Foto da Advogada Jéssica Souza dos Santos">
+    <img src="jessica 02.jpg" alt="Foto da Advogada Jéssica Souza dos Santos versão hover">
+  </div>
+  <div class="perfil-texto">
+    <h2>Dra. Jéssica Souza dos Santos</h2>
+    <p>Advogada pós-graduada em Direito Penal e Processo Penal, além de Direito Aeronáutico.</p>
+    <p>Também possui pós-graduação em Direito Civil e Processo Civil, Direito de Família e Sucessões, e Direito do Agronegócio.</p>
+    <p>Atua com dedicação e excelência nas áreas criminal, cível, familiar e agronegócios, oferecendo um atendimento personalizado e baseado em sólida formação técnica.</p>
+
+    <!-- Link Instagram -->
+    <a href="https://www.instagram.com/smsadvocaciaoficial" target="_blank" rel="noopener" class="instagram-link" aria-label="Instagram da Dra. Jéssica Souza dos Santos">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" >
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 2.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-.75a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0z"/>
+      </svg>
+      @smsadvocaciaoficial
+    </a>
+  </div>
+</section>
+
+<!-- Botão flutuante de menu -->
+<div class="menu-fab" id="fab" aria-label="Menu flutuante">
+  <button class="fab-button" aria-haspopup="true" aria-expanded="false" aria-controls="fab-menu" aria-label="Abrir menu de navegação" onclick="toggleFab()">
+    ☰
+  </button>
+  <nav id="fab-menu" class="fab-menu" role="menu" aria-hidden="true">
+    <a href="index.html" role="menuitem">Início</a>
+         <a href="equipe.html" role="menuitem">Equipe</a>  <!-- Aqui está a nova opção -->
+  </nav>
+</div>
+
+<!-- Script para abrir/fechar menu -->
+<script>
+  function toggleFab() {
+    const fab = document.getElementById('fab');
+    const menu = document.getElementById('fab-menu');
+    fab.classList.toggle('fab-open');
+
+    // Atualiza atributos ARIA para acessibilidade
+    const isOpen = fab.classList.contains('fab-open');
+    menu.setAttribute('aria-hidden', !isOpen);
+    fab.querySelector('button').setAttribute('aria-expanded', isOpen);
+  }
+</script>
