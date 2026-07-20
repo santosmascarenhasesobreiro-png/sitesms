@@ -1,0 +1,1630 @@
+/* RESET BÁSICO */
+* {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
+
+/* ==== VÍDEO NO TOPO ==== */
+.video-topo {
+  position: relative;
+  width: 100%;
+  height: 70vh;       /* altura padrão no PC */
+  min-height: 320px;
+  background: #000;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.video-topo::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(rgba(0,0,0,.22), rgba(22,20,18,.55));
+  z-index: 1;
+}
+
+.video-topo video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;        /* mantém preenchido */
+  object-position: center;  /* centraliza o vídeo */
+  z-index: 0;
+}
+
+/* conteúdo em cima do vídeo */
+.video-topo .conteudo-sobreposto {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  padding: 1rem;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+}
+
+/* ==== Ajuste no CELULAR ==== */
+@media (max-width: 768px) {
+  .video-topo {
+    height: 40vh;       /* altura menor no celular */
+    min-height: 200px;  /* garante não ficar pequeno demais */
+  }
+}
+
+
+/* ================================
+   RESTANTE DO SEU CSS ORIGINAL
+   ================================ */
+
+/* LOGO NO TOPO */
+.logo-topo {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 10px solid #000000;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.logo-topo img {
+  width: 100vw;
+  height: 450px;
+  display: block;
+  object-fit: cover;
+  margin-bottom: 0;
+}
+
+/* Ajuste do elemento logo abaixo para ficar próximo */
+.video-topo-carousel {
+  margin-top: 5px;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('logo site todo.jpg') no-repeat center top fixed;
+  background-size: 200%;
+  background-position: center center;
+  color: #222;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Camada de sombra */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(216, 213, 206, 0.25);
+  pointer-events: none;
+  z-index: -1;
+}
+
+  
+  
+  
+.slogan-sobreposto {
+  
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f7a53d;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 12px;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+
+
+.video-topo::after {
+
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px 30px;
+  border-radius: 8px;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+
+  /* MENU NAVEGAÇÃO */
+  header {
+    background-color: #131416;
+    padding: 18px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin-bottom: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+  
+  .menu a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background: #0074d9;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(0,116,217,0.5);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .menu a:hover {
+    background-color: #005fa3;
+    transform: translateY(-3px);
+  }
+  
+  .menu a:active {
+    background-color: #f71691;
+    transform: scale(0.95);
+  }
+  
+  /* SEÇÃO CONTATO */
+  .contato {
+  background-color: #ffc710;
+  border-radius: 24px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+  padding: 60px 40px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contato h2 {
+  font-size: 36px;
+  color: #fff3e0;
+  font-weight: 800;
+  margin-bottom: 30px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.7),  /* sombra principal escura */
+    0 0 6px rgba(255, 255, 255, 0.1); /* leve brilho branco para contraste */
+}
+
+.contato p.subtitulo {
+  font-size: 18px;
+  color: #000000;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  line-height: 1.5;
+  font-weight: 500;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Grid para os cards */
+.contato-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* Cartão de contato */
+.contato {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+  padding: 60px 40px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contato h2 {
+  font-size: 36px;
+  color: #fff3e0;
+  font-weight: 800;
+  margin-bottom: 30px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.7),  /* sombra principal escura */
+    0 0 6px rgba(255, 255, 255, 0.1); /* leve brilho branco para contraste */
+}
+
+.contato p.subtitulo {
+  font-size: 18px;
+  color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  line-height: 1.5;
+  font-weight: 500;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Grid para os cards */
+.contato-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* Cartão de contato */
+.contato-card {
+  background: #13bcff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 128, 255, 0.12);
+  width: 230px;
+  padding: 30px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contato-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(29, 129, 230, 0.25);
+}
+
+.contato-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contato-foto {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.contato-card:hover .contato-foto {
+  transform: scale(1.1);
+}
+
+.contato-card h3 {
+  font-size: 22px;
+  color: #363636;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.contato-card .cargo {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 18px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.contato-card p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Destaque para WhatsApp */
+.contato-card.destaque {
+  background: #ffffff;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0, 116, 217, 0.5);
+}
+
+.contato-card.destaque h3,
+.contato-card.destaque .cargo,
+.contato-card.destaque p {
+  color: #fff;
+}
+
+.contato-card.destaque .contato-foto {
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Melhorias extras */
+.contato-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Destaque para WhatsApp */
+.contato-card.destaque {
+  background: #ffffff;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0, 116, 217, 0.5);
+}
+
+.contato-card.destaque h3,
+.contato-card.destaque .cargo,
+.contato-card.destaque p {
+  color: #fff;
+}
+
+.contato-card.destaque .contato-foto {
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.6);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .contato {
+    padding: 40px 20px;
+  }
+  .contato h2 {
+    font-size: 28px;
+  }
+  .contato p.subtitulo {
+    font-size: 16px;
+    max-width: 90%;
+  }
+  .contato-grid {
+    flex-direction: column;
+    gap: 35px;
+    align-items: center;
+  }
+  .contato-card {
+    width: 90vw;
+    max-width: 320px;
+    padding: 25px 15px;
+  }
+  .contato-foto {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 18px;
+  }
+  .contato-card h3 {
+    font-size: 20px;
+  }
+  .contato-card .cargo {
+    font-size: 14px;
+  }
+  .contato-card p {
+    font-size: 14px;
+  }
+}
+  
+  /* Texto que aparece ao clicar (JS precisa ativar classe) */
+  .texto-expansivel {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 14px;
+    color: #333;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    text-align: center;
+    padding: 0 10px;
+    line-height: 1.4;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  .contato-item.ativo .texto-expansivel {
+    max-height: 120px;
+    opacity: 1;
+    padding-top: 15px;
+    pointer-events: auto;
+    user-select: auto;
+  }
+  
+  
+ /* NOSSOS SERVIÇOS - ESTILO JURÍDICO REFINADO */
+.ajuda-legal {
+  width: 100%;
+  max-width: none; /* removendo o limite máximo */
+  padding: 70px 20px; /* padding lateral menor pra ficar bom no 100% */
+  margin: 0 auto;
+  background: linear-gradient(
+      to right, 
+      rgba(238, 225, 168, 0.4), 
+      rgba(139, 139, 139, 0.4)
+    ), 
+    url('LOGO\ DO\ ZAP\ INICIAL.jpg') center/cover no-repeat;
+  color: #f5f5f5;
+  text-align: center;
+  font-family: "Georgia", serif;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+  border-radius: 0; /* opcional: sem borda arredondada para barra completa */
+  border: none; /* opcional: sem borda para barra completa */
+  letter-spacing: 0.03em;
+}
+
+.ajuda-legal h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.90); /* sombra mais forte e suave */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+}
+
+.ajuda-legal p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.90);
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  background: linear-gradient(135deg, #128c45, #0f7b3c); /* gradiente elegante */
+  color: #ffffff;
+  font-size: 20px;
+  padding: 18px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(18, 140, 69, 0.5);
+  transition: all 0.3s ease;
+  border: none;
+  letter-spacing: 0.05em;
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #0f7b3c, #0a5e2a);
+  box-shadow: 0 10px 25px rgba(18, 140, 69, 0.7);
+  transform: translateY(-2px);
+  color: #e6f4e6;
+  cursor: pointer;
+}
+
+  /* SEÇÃO FEED */
+.feed {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  background: linear-gradient(135deg, #807f7b, #444444);
+  padding: 50px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px ssrgba(0, 0, 0, 0.4); /* sombra dourada */
+  text-align: center;
+  position: relative;
+  color: #e6d7a3; /* dourado claro para texto */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 2px solid #5f5a48; /* borda dourada suave */
+}
+
+.feed h2 {
+  font-size: 34px;
+  color: hsl(49, 100%, 92%); /* amarelo dourado */
+  margin-bottom: 40px;
+  font-weight: 800;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  letter-spacing: 1.5px;
+  font-family: 'Georgia', serif;
+}
+
+/* Contêiner do carrossel */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 50px; /* mais espaço pros botões */
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Faixa do carrossel */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 25px;
+  will-change: transform;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+
+/* Itens do carrossel */
+.carousel-item {
+  flex: 0 0 80%; /* ocupa 80% do container */
+  background-color: #fceccf;
+  padding: 30px 35px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(24, 24, 23, 0.3);
+  font-size: 18px;
+  color: #2e2e2e; /* dourado pálido */
+  min-height: 160px;
+  text-align: center;
+  line-height: 1.6;
+  scroll-snap-align: start;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #ffffed;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(252, 248, 227, 0.6);
+}
+
+/* Botões de navegação */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ddd4c5; /* dourado */
+  color: #2f2f2f;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  font-size: 28px;
+  border-radius: 50%;
+  z-index: 20;
+  box-shadow: 0 5px 15px rgba(102, 100, 94, 0.7);
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.carousel-btn:hover {
+  background-color: #fff8f191;
+  color: #1a1a1a;
+  transform: translateY(-50%) scale(1.15);
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .menu a {
+      padding: 10px 16px;
+      font-size: 16px;
+    }
+    .contato ul {
+      gap: 35px;
+    }
+    .contato-item {
+      width: 90vw;
+      max-width: 300px;
+      border-radius: 16px;
+      height: auto;
+      padding: 25px 20px;
+      flex-direction: row;
+      text-align: left;
+    }
+    .contato-item .secao-imagem {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+    }
+    .contato-nome {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .texto-expansivel {
+      max-height: none !important;
+      opacity: 1 !important;
+      padding-top: 0;
+    }
+    .menu-imagens a {
+      width: 90vw;
+      max-width: 300px;
+      height: 180px;
+    }
+    .servicos-quadro {
+      gap: 30px;
+    }
+    .servico-item {
+      width: 90vw;
+      max-width: 300px;
+      height: 180px;
+    }
+    .carousel-item {
+      flex: 0 0 90%;
+      min-height: 120px;
+      padding: 20px 25px;
+    }
+    .carousel-container {
+      padding: 0 20px;
+    }
+    .carousel-btn {
+      padding: 10px 14px;
+      font-size: 22px;
+    }
+  }
+  
+  /* CHATBOT */
+  #chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 9999;
+  }
+  
+  #chatbot-header {
+    background: #004080;
+    color: white;
+    padding: 12px 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #chatbot-close {
+    cursor: pointer;
+    font-size: 22px;
+  }
+  
+  #chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 15px;
+    position: relative;
+    background: url('sms-logo.png') no-repeat center center;
+    background-size: contain;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  #chatbot-messages::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  #chatbot-messages > div {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    display: inline-block;
+  }
+  
+  .message.user {
+    align-self: flex-end;
+    background-color: #004080;
+    color: white;
+    border-bottom-right-radius: 0;
+    text-align: right;
+  }
+  
+  .message.bot {
+    align-self: flex-start;
+    background-color: #e2e8f0;
+    color: #222;
+    border-bottom-left-radius: 0;
+    text-align: left;
+  }
+  
+  #chatbot-input {
+    border: none;
+    border-top: 1px solid #ddd;
+    padding: 12px 16px;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #004080;
+    border: none;
+    color: white;
+    font-size: 26px;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    z-index: 10000;
+  }
+  
+  #chatbot-toggle:hover {
+    background-color: #0066cc;
+  }
+  
+  /* FUNDO COM IMAGEM PARA O CONTEÚDO ABAIXO DO VÍDEO */
+  .conteudo-fundo {
+    background: url('sms-adv.png') no-repeat center center fixed;
+    background-size: cover;
+    padding: 30px 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: white;
+  }
+
+
+.slideshow-bounce {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.slideshow-bounce .slide-container {
+  position: relative;
+  width: 900px; /* tamanho médio fixo */
+  max-width: 90%; /* responsivo em telas menores */
+  height: 500px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(223, 211, 144, 0.2);
+}
+
+.slideshow-bounce .slide-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: scale(0.95);
+  z-index: 0;
+}
+
+.slideshow-bounce .slide-container img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+
+/* CONTATO ATUAÇÃO JURIDICA*/
+
+.contato {
+  padding: 40px 20px;
+  background: 
+    linear-gradient(rgba(241, 223, 199, 0.6), rgba(209, 209, 209, 0.4)),
+    url('foto\ equipe..jpg') center/cover no-repeat;
+  text-align: center;
+  color: #ffffff;
+}
+
+.subtitulo-contato {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.90);
+}
+
+.contato-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.contato-card {
+  width: 250px;
+  background-color: rgba(255, 249, 232, 0.50); /* mesma cor com 85% de opacidade */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(2px); /* opcional: efeito esfumaçado */
+}
+
+.contato-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.contato-foto {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.cargo {
+  display: block;
+  font-weight: bold;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* MODAL */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 8px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
+  animation: slideDown 0.4s ease forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px; right: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #2e7d32;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.modal-btn:hover {
+  background-color: #27632a;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-30px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+
+.areas {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+}
+
+.area {
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-left: 5px solid #00ff2a;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.area h3 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.area p {
+  margin: 10px 0 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+
+/* RODAPÉ PRINCIPAL */
+/* RODAPÉ PRINCIPAL */
+footer {
+  background: linear-gradient(to top, #333333, #6b675fd7);
+  color: #ffae00;
+  padding: 50px 20px 40px;
+  font-family: "Georgia", serif;
+  box-shadow: inset 0 5px 20px rgba(0, 0, 0, 0.4);
+  border-top: 4px solid #bda268;
+}
+
+.container-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.logo-section {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-section .logo {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.6));
+  transition: transform 0.3s ease;
+}
+
+.logo-section .logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-section .selo {
+  max-width: 120px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.logo-section .selo:hover {
+  opacity: 1;
+}
+
+/* Info e Contato sections */
+.info-section, .contato-section {
+  flex: 1 1 280px;
+}
+
+:root {
+  --cor-borda-titulo: rgba(255, 0, 0, 0.6);
+}
+
+.info-section h3, .contato-section h3 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--cor-borda-titulo);
+  padding-bottom: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.info-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-section ul li {
+  margin-bottom: 12px;
+}
+
+.info-section ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  /* cor herdada do footer */
+}
+
+.info-section ul li a:hover {
+  color: #ff0202;
+  text-decoration: underline;
+}
+
+.contato-section p {
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.5;
+  /* cor herdada do footer */
+}
+
+.contato-section p strong {
+  font-weight: bold;
+  /* cor herdada do footer */
+}
+
+/* Ícones sociais */
+.social-icons {
+  margin-top: 12px;
+  display: flex;
+  gap: 18px;
+  font-size: 22px;
+}
+
+.social-icons a {
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* cor herdada do footer */
+}
+
+.social-icons a:hover {
+  color: #ff0606;
+  transform: scale(1.2);
+}
+
+
+/* ... seu CSS antigo aqui ... */
+
+/* ===== CONFIGURAÇÃO DE CORES DO RODAPÉ ===== */
+:root {
+  --footer-text-color: #c5bda5; /* cor padrão */
+  --footer-hover-color: #aa9e85; /* cor quando passa o mouse */
+}
+
+footer,
+footer * {
+  color: var(--footer-text-color) !important;
+}
+
+footer a:hover {
+  color: var(--footer-hover-color) !important;
+}
+
+
+
+
+/* Rodapé inferior */
+.rodape-inferior {
+  background-color: #4b4b4e;
+  color: #c5bda5;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 0.05em;
+  border-top: 1px solid #a08b64;
+  user-select: none;
+}
+
+/* Responsividade simples */
+@media (max-width: 900px) {
+  .container-footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-section, .info-section, .contato-section {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .info-section ul li {
+    display: inline-block;
+    margin: 0 10px 12px 10px;
+  }
+}
+
+/* SEÇÕES DE INFORMAÇÕES E CONTATOS */
+.info-section, .contato-section {
+  max-width: 300px;
+}
+
+
+/* LINHA ABAIXO DE INFORMAÇÕES E CONTATOS NO RODAPE PRINCIPAL */
+
+.info-section h3, .contato-section h3 {
+  color: #ddcdb9;
+  border-bottom: 2px solid #fff6dc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.info-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-section ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.info-section ul li a:hover {
+  color: #cfa144;
+}
+
+/* REDES SOCIAIS */
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #cfa144;
+  margin-right: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #000;
+}
+
+
+
+/* ESTILO PARA A SEÇÃO DE DESTAQUES */
+.destaques {
+  background: linear-gradient(to right, #555454, #3e3e3e); /* fundo com leve degradê */
+  padding: 15px 10px;
+  border-top: 4px solid #c4b597;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.7); /* sombra interna leve */
+}
+
+.container-destaques {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.destaque {
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+.destaque h2 {
+  font-size: 2.8rem;
+  color: #c0ae90;
+  margin: 0;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* destaque */
+}
+
+.destaque h2:hover {
+  transform: scale(1.05);
+}
+
+.destaque p {
+  font-size: 1.1rem;
+  color: #f0f0f0;
+  margin: 8px 0 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.destaque p span {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+
+
+
+.voce-sabia {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.voce-sabia h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 25px;
+}
+
+.carousel-container-mini {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track-mini {
+  display: flex;
+  transition: transform 0.4s ease;
+  gap: 20px;
+}
+
+.carousel-item-mini {
+  flex: 0 0 80%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border: 1px solid #eaeaea;
+  text-align: center;
+}
+
+.carousel-item-mini i {
+  font-size: 40px;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+.carousel-item-mini h3 {
+  color: #003366;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.carousel-item-mini p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.carousel-btn-mini {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #003366;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel-btn-mini.left { left: 10px; }
+.carousel-btn-mini.right { right: 10px; }
+
+/* Faixa full-bleed: ocupa a largura toda mesmo dentro de containers */
+.faixa-fundo {
+  position: relative;
+
+  /* quebra as bordas do container para ficar 100% da viewport */
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* fundo: imagem + um degradê branco por cima (ajuste a opacidade se quiser) */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)),
+    url('sms.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* layout */
+  min-height: 420px;            /* altura da faixa */
+  padding: 60px 20px;           /* respiro interno */
+  display: grid;
+  place-items: center;
+}
+
+.faixa-fundo .faixa-inner {
+  max-width: 1100px;
+  text-align: center;
+}
+
+.faixa-fundo h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  margin-bottom: .5rem;
+}
+
+.faixa-fundo p {
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.6;
+}
+
+/* ===== fundo (sem fade embaixo) ===== */
+.vc-sabia-fundo {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* Degradê transparente para cor sólida (sombra suave embaixo) */
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 244, 243, 0) 0%,
+    rgba(245, 232, 219, 0.85) 70%,
+    rgba(168, 147, 109, 0.404) 100%
+  );
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 80vh;
+  padding: 7rem 1.25rem;
+  text-align: center;
+  color: #1f2937;
+}
+
+/* ===== card (MAIOR EM ALTURA) ===== */
+.vc-card {
+  margin: 0 auto;
+  max-width: 900px;
+
+  /* Imagem de fundo + sobreposição para legibilidade */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(199, 180, 140, 0.2)),
+    url('sms.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.20);
+
+  padding: 3rem 2rem;
+  min-height: clamp(300px, 45vh, 560px);
+
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.vc-card:hover,
+.vc-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(0,0,0,.28);
+  border-color: rgba(0,0,0,.12);
+}
+
+.vc-sabia-inner{ max-width:960px; margin:0 auto; }
+.vc-sabia-inner h2 {
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: .04em;
+  margin-bottom: .5rem;
+  color: #585553; /* dourado suave */
+}
+/* itens do carrossel + efeito de pulo */
+@keyframes bounceIn{
+  0%{ transform:scale(.92) translateY(10px); opacity:0; }
+  50%{ transform:scale(1.06) translateY(-6px); opacity:1; }
+  75%{ transform:scale(.98) translateY(2px); }
+  100%{ transform:scale(1) translateY(0); }
+}
+.vc-sabia-carousel .vc-item {
+  display: none;
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.7;
+  color: #635b53; /* marrom escuro */
+}
+
+.vc-sabia-carousel .vc-item.active {
+  display: block;
+  animation: bounceIn .8s ease;
+}
+.vc-sabia-carousel .vc-item.active{ display:block; animation:bounceIn .8s ease; }
+
+/* controles */
+.vc-controls{
+  margin-top:.75rem; display:flex; gap:.75rem; justify-content:center;
+}
+.vc-controls .vc-prev, .vc-controls .vc-next{
+  width:40px; height:40px; border-radius:50%;
+  border:none; cursor:pointer; font-size:22px; line-height:40px;
+  background:#5a5957; color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.40);
+  transition: transform .2s ease, opacity .2s ease;
+}
+.vc-controls button:hover{ transform:translateY(-2px) scale(1.05); }
+.vc-controls button:active{ transform:scale(.96); }
+.vc-controls button:focus-visible{ outline:3px solid #ffc400; outline-offset:2px; }
+
+/* bolinhas */
+.vc-dots{ display:flex; justify-content:center; gap:.5rem; margin-top:.25rem; }
+.vc-dots button{
+  width:10px; height:10px; border-radius:50%; border:none; background:#9CA3AF; opacity:.7; cursor:pointer;
+  transition: transform .2s ease, opacity .2s ease, background-color .2s ease;
+}
+.vc-dots button.active{ background:#af9376; opacity:1; transform:scale(1.2); }
+
+/* responsivo */
+@media (max-width:640px){
+  .vc-sabia-fundo{ min-height:65vh; padding:4.5rem 1rem; }
+  .vc-card{
+    padding: 2rem 1.25rem;
+    min-height: clamp(260px, 50vh, 480px);
+  }
+}
+
+
+
+/*************************************************
+  RESPONSIVIDADE – ADITIVO (cole no final do CSS)
+**************************************************/
+
+/* ===== Tablet (até 900px) ===== */
+@media (max-width: 900px) {
+  /* Tipografia base um pouco maior */
+  body { font-size: 17px; line-height: 1.55; }
+
+  /* Vídeo do topo mais baixo */
+  .video-topo { height: 52vh; min-height: 260px; }
+  .video-topo .conteudo-sobreposto { padding: 0.75rem; }
+  .slogan-sobreposto { font-size: clamp(22px, 5.2vw, 34px); padding: 12px 20px; }
+
+/* === Compactar DESTAQUES só em celular === */
+@media (max-width: 768px) {
+  .destaques {
+    padding: 8px 6px !important;       /* altura menor, mas mantém a faixa cinza */
+    border-top: 2px solid #c4b597;     /* borda mais fina */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5); /* sombra mais leve */
+  }
+
+  .destaques .container-destaques {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas no mobile */
+    gap: 8px 12px !important; 
+  }
+
+  .destaques .destaque {
+    padding: 2px 0 !important;
+  }
+
+  .destaques .destaque h2 {
+    font-size: clamp(16px, 5vw, 22px) !important; /* números menores */
+    margin: 0 !important;
+  }
+
+  .destaques .destaque p {
+    font-size: clamp(10px, 3vw, 12px) !important; /* legendas menores */
+    margin-top: 2px !important;
+  }
+}
+  /* Cards de atuação */
+  .contato { padding: 44px 22px; }
+  .contato h2 { font-size: clamp(22px, 4.6vw, 30px); }
+  .subtitulo-contato { font-size: clamp(14px, 2.9vw, 18px); }
+  .contato-grid { gap: 24px; }
+  .contato-card { width: min(92vw, 340px); padding: 22px 16px; }
+  .contato-card h3 { font-size: clamp(18px, 3.6vw, 22px); }
+  .contato-card .cargo,
+  .contato-card p { font-size: clamp(14px, 2.9vw, 16px); }
+
+  /* Você Sabia */
+  .vc-sabia-fundo { padding: 5rem 1rem; }
+  .vc-card { padding: 1.75rem 1.25rem; }
+  .vc-card h2 { font-size: clamp(20px, 4.6vw, 28px); }
+  .vc-sabia-carousel .vc-item { font-size: clamp(15px, 3.4vw, 18px); }
+
+  /* Botão WhatsApp */
+  .btn-whatsapp { font-size: clamp(16px, 3.6vw, 18px); padding: 14px 22px; }
+
+  /* Rodapé */
+  .container-footer { gap: 24px; }
+  .info-section h3, .contato-section h3 { font-size: clamp(16px, 3.6vw, 18px); }
+  .info-section ul li a,
+  .contato-section p { font-size: clamp(14px, 3.2vw, 16px); }
+  .rodape-inferior { font-size: clamp(12px, 3.2vw, 14px); padding: 10px 8px; }
+}
+
+/* ===== Mobile (até 768px) ===== */
+@media (max-width: 768px) {
+  /* Mantém tudo legível no celular */
+  body { font-size: 18px; }
+
+  /* Vídeo: menor pra não “engolir” a página */
+  .video-topo { height: 42vh; min-height: 220px; }
+  .slogan-sobreposto { font-size: clamp(20px, 5.8vw, 30px); }
+
+  /* === Compactar DESTAQUES só em celular === */
+  .destaques {
+    padding: 8px 6px !important;       /* altura menor, mas mantém a faixa cinza */
+    border-top: 2px solid #c4b597;     /* borda mais fina */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5); /* sombra mais leve */
+  }
+
+  .destaques .container-destaques {
+    display: grid !important;                        
+    grid-template-columns: repeat(2, minmax(0, 1fr));/* 2 por linha no celular */
+    gap: 10px 12px !important;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .destaques .destaque {
+    min-width: 0 !important;
+    padding: 2px 6px !important;
+    text-align: center;
+  }
+
+  .destaques .destaque h2 {
+    font-size: clamp(16px, 5vw, 22px) !important; /* números menores */
+    margin: 0 !important;
+  }
+
+  .destaques .destaque p {
+    font-size: clamp(10px, 3vw, 12px) !important; /* legendas menores */
+    margin-top: 2px !important;
+  }
+
+  /* Cards */
+  .contato-card { width: 94vw; max-width: 360px; padding: 22px 18px; }
+  .contato-card h3 { font-size: clamp(18px, 4.8vw, 22px); }
+  .contato-card .cargo,
+  .contato-card p { font-size: clamp(14px, 3.8vw, 16px); }
+
+  /* Você Sabia */
+  .vc-card { min-height: auto; }
+  .vc-controls .vc-prev, .vc-controls .vc-next { width: 36px; height: 36px; font-size: 18px; }
+
+  /* Menu: botões maiores para toque */
+  .menu { gap: 14px; }
+  .menu a { padding: 10px 16px; font-size: 16px; }
+}
+
+/* ===== Telas muito pequenas (até 380px) ===== */
+@media (max-width: 380px) {
+  /* mantém tudo legível e ainda mais compacto */
+  .destaques .container-destaques {
+    grid-template-columns: 1fr !important; /* uma coluna só */
+    gap: 8px !important;
+  }
+  .destaques .destaque h2 { font-size: clamp(14px, 5vw, 20px) !important; }
+  .destaques .destaque p  { font-size: clamp(9px, 3.2vw, 11px) !important; }
+}
