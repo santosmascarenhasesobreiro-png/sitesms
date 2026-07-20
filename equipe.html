@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equipe - SMS Advocacia</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* Fundo com degradê de duas cores */
+      background: linear-gradient(to top, #5b5950, #282725);
+      color: #918e7d;
+    }
+
+    /* Estilo da equipe */
+    .equipe {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .equipe h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .equipe-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .equipe-membro {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 280px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .equipe-membro:hover {
+      transform: translateY(-5px);
+    }
+
+    .equipe-membro img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #918e7d;
+    }
+
+    .equipe-membro h3 {
+      margin: 10px 0 5px;
+      font-size: 1.2em;
+      color: #333;
+      text-transform: capitalize;
+    }
+
+    .equipe-membro p {
+      font-size: 0.95em;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .equipe-contatos {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .equipe-contatos a {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.85em;
+      background-color: #918e7d;
+      color: #fff;
+      transition: background-color 0.2s ease;
+    }
+
+    .equipe-contatos a:hover {
+      background-color: #6e6b5c;
+    }
+
+    /* Botão Voltar ao topo */
+    .voltar-inicio {
+      display: block;
+      margin: 50px auto 30px;
+      width: fit-content;
+      background-color: #918e7d;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .voltar-inicio:hover {
+      background-color: #6e6b5c;
+    }
+
+    /* Tablet */
+    @media screen and (max-width: 768px) {
+      .equipe-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Botão de menu flutuante */
+    .menu-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .fab-button {
+      background-color: #918e7d;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .fab-button:hover {
+      transform: scale(1.1);
+      background-color: #6e6b5c;
+    }
+
+    .fab-menu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 10px 0;
+      min-width: 150px;
+    }
+
+    .fab-menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .fab-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .fab-open .fab-menu {
+      display: flex;
+    }
+
+    /* =========================================
+       BLOCO EXCLUSIVO PARA CELULAR (≤600px)
+       Ajuste aqui tamanhos/espacamentos mobile
+       ========================================= */
+    @media screen and (max-width: 600px) {
+      body {
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .equipe {
+        padding: 28px 14px;
+      }
+
+      .equipe h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+      }
+
+      .equipe-container {
+        gap: 18px;
+      }
+
+      .equipe-membro {
+        max-width: 92%;
+        padding: 18px;
+        border-radius: 14px;
+      }
+
+      .equipe-membro img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 12px;
+        border-width: 2px;
+      }
+
+      .equipe-membro h3 {
+        font-size: 1.05em;
+      }
+
+      .equipe-membro p {
+        font-size: 0.92em;
+      }
+
+      .equipe-contatos {
+        gap: 8px;
+      }
+
+      .equipe-contatos a {
+        padding: 10px 14px;         /* alvo de toque maior */
+        font-size: 0.9em;
+      }
+
+      .voltar-inicio {
+        padding: 10px 16px;
+        font-size: 0.9em;
+        margin: 36px auto 24px;
+      }
+
+      .fab-button {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+      }
+
+      .fab-menu a {
+        padding: 10px 16px;
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- âncora para voltar ao topo -->
+  <a id="topo"></a>
+
+  <!-- Seção Equipe -->
+  <section class="equipe">
+    <h2>Conheça Nossa Equipe</h2>
+    <div class="equipe-container">
+
+
+
+           <!-- Membro 1 -->
+      <div class="equipe-membro">
+        <img src="jessica.jpg" alt="Dra. Jéssica Souza dos Santos" loading="lazy" />
+        <h3>Dra. Jéssica Souza dos Santos</h3>
+        <p>
+          Pós-graduada em Direito Penal, Processo Penal e Direito Aeronáutico, com especialização em Direito Civil, Família, Sucessões e Agronegócio.
+          Atua com dedicação oferecendo soluções jurídicas claras, precisas e personalizadas.
+        </p>
+        <div class="equipe-contatos">
+          <a href="https://wa.me/5562982809879" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/jessicaadv_" target="_blank" rel="noopener">Instagram</a>
+          <a href="jessica.html">Perfil</a>
+        </div>
+      </div>
+
+      <!-- Membro 2 -->
+      <div class="equipe-membro">
+        <img src="pabllo (2).jpg" alt="Dr. Pabllo de Sá Mascarenhas" loading="lazy" />
+        <h3>Dr. Pabllo de Sá Mascarenhas</h3>
+        <p>Atua na área Criminal, com expertise em defesa e acompanhamento de processos penais. Experiência em audiências, recursos e medidas cautelares.</p>
+        <div class="equipe-contatos">
+          <a href="https://wa.me/5562982809879" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/pabllo_mascarenhas" target="_blank" rel="noopener">Instagram</a>
+          <a href="pabllo perfil.html">Perfil</a>
+        </div>
+      </div>
+
+          <!-- Membro 3  -->
+      <div class="equipe-membro">
+        <img src="kelsto.jpg" alt="Dr. Kelsto Marques" loading="lazy" />
+        <h3>Dr. Kelsto Marques</h3>
+        <p>Especialista em Direito de Família. Atua com empatia e foco na pacificação de conflitos.</p>
+        <div class="equipe-contatos">
+          <a href="https://wa.me/5562982809879" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/Kelsto_marques" target="_blank" rel="noopener">Instagram</a>
+          <a href="Kelsto.html">Perfil</a>
+        </div>
+      </div>
+
+      <!-- Membro 4 -->
+      <div class="equipe-membro">
+        <img src="img/membro3.jpg" alt="Dra. Gessica" loading="lazy" />
+        <h3>Dra. Gessica</h3>
+        <p>Atendimento jurídico e triagem. Auxilia clientes com orientação clara e objetiva.</p>
+        <div class="equipe-contatos">
+          <a href="https://wa.me/5562982809879" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/advgessicagoncalves" target="_blank" rel="noopener">Instagram</a>
+          <a href="gessica.html">Perfil</a>
+        </div>
+      </div>
+
+      <!-- Membro 5 -->
+      <div class="equipe-membro">
+        <img src="sarah.jpg" alt="Estagiária Sarah Vitória" loading="lazy" />
+        <h3>Estagiária Sarah Vitória</h3>
+        <p>Responsável pela elaboração de peças processuais e pelo atendimento personalizado aos clientes, Sarah alia dedicação e atenção para oferecer suporte jurídico eficiente.</p>
+        <div class="equipe-contatos">
+          <a href="https://wa.me/556291112233" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/sarahvitoria._" target="_blank" rel="noopener">Instagram</a>
+          <a href="sarah.html">Perfil</a>
+        </div>
+      </div>
+
+      <!-- Membro 6 -->
+      <div class="equipe-membro">
+        <img src="gabriela.jpg" alt="Estagiária Gabriela Rocha da Silva" loading="lazy" />
+        <h3>Estagiária Gabriela Rocha da Silva</h3>
+        <p>
+          Estagiária dedicada ao atendimento jurídico e triagem. Auxilia clientes com orientação clara e objetiva, além de colaborar na elaboração de peças processuais e suporte administrativo.
+        </p>
+        <div class="equipe-contatos">
+          <a href="https://wa.me/5562982809879" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/gabrielarhsilva" target="_blank" rel="noopener">Instagram</a>
+          <a href="gabriela.html">Perfil</a>
+        </div>
+      </div>
+
+    </div>
+
+    <a class="voltar-inicio" href="#topo">Voltar ao Início</a>
+  </section>
+
+  <!-- Botão flutuante -->
+  <div class="menu-fab" id="fab">
+    <button class="fab-button" aria-label="Abrir menu" onclick="toggleFab()">☰</button>
+    <div class="fab-menu" role="menu">
+      <a href="index.html" role="menuitem">Início</a>
+    </div>
+  </div>
+
+  <!-- Script para abrir/fechar o menu -->
+  <script>
+    function toggleFab() {
+      document.getElementById('fab').classList.toggle('fab-open');
+    }
+  </script>
+
+</body>
+</html>

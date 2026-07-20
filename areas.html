@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Áreas de Atuação - SMS</title>
+  <style>
+    /* Estilos Gerais */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(44, 44, 44, 0.2), /* Cinza escuro */
+          rgba(191, 164, 111, 0.3) /* Dourado escuro */
+        ),
+        url('logo site todo.jpg') no-repeat center center fixed;
+      background-size: 150%; /* Aumenta a imagem */
+      color: #fffcec;
+    }
+
+    .areas {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .areas h2 {
+      text-align: center;
+      color: #fffcec;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+    }
+
+    .area {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 254, 251, 0.9),
+        rgba(204, 197, 174, 0.529)
+      );
+      margin-bottom: 20px;
+      padding: 15px 20px;
+      border-left: 5px solid transparent;
+      border-image: linear-gradient(to bottom, #9a9168, #5b5950) 1;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      color: #5b5950;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .area:hover {
+      background-color: #464543;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      color: #fffcec;
+    }
+
+    .area h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .descricao {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+      color: #333;
+      margin: 15px auto 0;
+      padding: 20px;
+      font-size: 1rem;
+      line-height: 1.7;
+      background: linear-gradient(135deg, #fffbf3, #f1f1f1);
+      border: 2px solid #cbd6e2;
+      border-left: 6px solid #5b5950;
+      border-radius: 12px;
+      width: 85%;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      position: relative;
+      text-align: center;
+      color: #5b5950;
+    }
+
+    .area.ativa .descricao {
+      max-height: 500px; /* suficiente para 2-3 parágrafos curtos */
+      opacity: 1;
+    }
+
+    /* Link WhatsApp dentro da descrição */
+    .whatsapp-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: #5b5950;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .whatsapp-link:hover {
+      color: #918e7d;
+    }
+
+    /* Botão flutuante */
+    .menu-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+    }
+
+    .fab-button {
+      background-color: #918e7d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .fab-button:hover {
+      transform: scale(1.1);
+      background-color: #6e6b5c;
+    }
+
+    .fab-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 10px 0;
+      min-width: 140px;
+      text-align: right;
+      z-index: 9999;
+    }
+
+    .fab-menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .fab-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .fab-open .fab-menu {
+      display: flex;
+    }
+
+    /* =======================
+       RESPONSIVIDADE GERAL
+       ======================= */
+
+    /* Até 768px (tablets e celulares em paisagem) */
+    @media (max-width: 768px) {
+      .areas {
+        max-width: 95%;
+        margin: 20px auto;
+        padding: 0 10px;
+      }
+
+      .areas h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+
+      .area {
+        padding: 12px 15px;
+      }
+
+      .area h3 {
+        font-size: 1.2rem;
+      }
+
+      .descricao {
+        width: 95%;
+        padding: 15px;
+        font-size: 0.95rem;
+      }
+
+      .fab-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+
+      .menu-fab {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .fab-menu {
+        min-width: 120px;
+      }
+    }
+
+    /* =========================================
+       BLOCO EXCLUSIVO PARA CELULAR (≤600px)
+       Ajuste aqui tamanhos/espacamentos mobile
+       ========================================= */
+    @media (max-width: 600px) {
+      body {
+        /* desempenho melhor no mobile */
+        background-attachment: scroll;
+        background-size: cover; /* cobre a tela no celular */
+      }
+
+      .areas {
+        margin: 18px auto;
+        padding: 0 12px;
+      }
+
+      .areas h2 {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+
+      .area {
+        padding: 12px 12px;
+        border-radius: 10px;
+      }
+
+      .area h3 {
+        font-size: 1.1rem;
+      }
+
+      .descricao {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        max-height: 0; /* base */
+      }
+
+      .area.ativa .descricao {
+        max-height: 800px; /* mais alto para caber textos maiores no celular */
+      }
+
+      .whatsapp-link {
+        font-size: 0.95rem;
+      }
+
+      .fab-button {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+      }
+
+      .fab-menu a {
+        padding: 9px 14px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="areas">
+  <h2>Áreas de Atuação</h2>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Civil</h3>
+    <div class="descricao">
+      Atua em conflitos do cotidiano que envolvem contratos, propriedades, responsabilidade civil, direito de família e sucessões, garantindo soluções jurídicas eficazes e personalizadas para proteger seus direitos e interesses.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Penal</h3>
+    <div class="descricao">
+      Defesa criminal ampla, incluindo acompanhamento de inquéritos, audiências, recursos e medidas cautelares, assegurando o respeito aos direitos fundamentais e a melhor estratégia para o seu caso.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Trabalhista</h3>
+    <div class="descricao">
+      Orientação e representação em questões trabalhistas, como reclamações, rescisões, reconhecimento de vínculo, assédio moral e direitos do trabalhador, com foco na valorização e proteção do seu trabalho.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Empresarial</h3>
+    <div class="descricao">
+      Consultoria e assessoria jurídica para empresas, envolvendo contratos, societário, negociações comerciais, recuperação judicial e planejamento estratégico para fortalecer e proteger seu negócio.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito do Consumidor</h3>
+    <div class="descricao">
+      Defesa dos direitos do consumidor em casos de cobranças indevidas, vícios, falhas na prestação de serviços e produtos, além de indenizações por danos materiais e morais.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Médico</h3>
+    <div class="descricao">
+      Atuação especializada em responsabilidade médica, ética profissional e defesa jurídica em processos administrativos e judiciais relacionados à área da saúde.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Aeronáutico</h3>
+    <div class="descricao">
+      Regulação, segurança, responsabilidade civil e penal em aviação civil e comercial, com foco em assegurar a conformidade legal e a proteção dos envolvidos no setor aéreo.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito do Passageiro</h3>
+    <div class="descricao">
+      Defesa dos direitos dos passageiros aéreos em casos de atrasos, cancelamentos, extravio de bagagens, overbooking e reembolsos, garantindo assistência e compensação adequada.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Tributário</h3>
+    <div class="descricao">
+      Planejamento tributário, defesas contra autuações fiscais, consultoria para redução de impostos e regularização fiscal, proporcionando segurança e economia para pessoas físicas e jurídicas.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Previdenciário</h3>
+    <div class="descricao">
+      Auxílio na obtenção e revisão de benefícios previdenciários, aposentadorias e pensões, garantindo o acesso aos direitos sociais de forma justa e ágil.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+
+  <div class="area" onclick="toggleDescricao(this)">
+    <h3>Direito Administrativo</h3>
+    <div class="descricao">
+      Atuação em processos administrativos, licitações, contratos públicos e defesa em casos de improbidade, assegurando transparência e legalidade na relação com o poder público.
+      <a href="https://wa.me/556282125318" target="_blank" class="whatsapp-link" rel="noopener">Para saber mais, fale com um de nossos especialistas</a>
+    </div>
+  </div>
+</section>
+
+  <!-- Botão flutuante -->
+  <div class="menu-fab" id="fab">
+    <button class="fab-button" aria-label="Abrir menu" onclick="toggleFab()">☰</button>
+    <div class="fab-menu" role="menu">
+      <a href="index.html" role="menuitem">Início</a>
+      <a href="https://wa.me/556282125318" target="_blank" rel="noopener noreferrer" role="menuitem">📱 WhatsApp</a>
+    </div>
+  </div>
+
+<script>
+  function toggleDescricao(elemento) {
+    const areas = document.querySelectorAll('.area');
+    areas.forEach(area => {
+      if (area !== elemento) {
+        area.classList.remove('ativa');
+      }
+    });
+    elemento.classList.toggle('ativa');
+  }
+
+  function toggleFab() {
+    document.getElementById('fab').classList.toggle('fab-open');
+  }
+</script>
+
+</body>
+</html>

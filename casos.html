@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sentenças deferidas - SMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: 
+        linear-gradient(rgba(249, 249, 249, 0.0), rgba(249, 249, 249, 0.0)),
+        url('logo site todo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      color: #5b5950;
+    }
+
+    .casos {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .casos h2,
+    .podcasts h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    /* Input filtro */
+    #filtroCasos {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+    #filtroCasos:focus {
+      border-color: #918e7d;
+    }
+
+    .caso {
+      background-color: #ffffff;
+      border-left: 5px solid #5b5950;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+      margin-bottom: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      position: relative;
+    }
+
+    .caso:hover {
+      transform: translateY(-3px);
+      background-color: #f0f0e8;
+    }
+
+    .caso.selecionado {
+      background-color: #dcd9c9;
+      border-left-color: #918e7d;
+      box-shadow: 0 5px 15px rgba(145, 142, 125, 0.4);
+    }
+
+    .caso h3 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #5b5950;
+    }
+
+    /* Colapsar descrição */
+    .descricao-caso {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      color: #333;
+      margin-top: 12px;
+      line-height: 1.6;
+      font-size: 15px;
+      padding-left: 10px;
+      border-left: 3px solid #918e7d;
+    }
+
+    .descricao-caso.aberto {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .podcasts {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .episodio {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 5px solid #6e6b5c;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 25px;
+    }
+
+    .episodio h4 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #6e6b5c;
+    }
+
+    .episodio video {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* Botão flutuante */
+    .menu-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+    }
+
+    .fab-button {
+      background-color: #918e7d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .fab-button:hover {
+      transform: scale(1.1);
+      background-color: #6e6b5c;
+    }
+
+    .fab-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 10px 0;
+      min-width: 160px;
+      text-align: right;
+      z-index: 9999;
+    }
+
+    .fab-menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .fab-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .fab-open .fab-menu {
+      display: flex;
+    }
+
+    /* ==========================
+       RESPONSIVIDADE CELULAR
+       ========================== */
+    @media (max-width: 600px) {
+      body {
+        background-attachment: scroll;
+        background-size: cover;
+      }
+
+      .casos, .podcasts {
+        margin: 20px auto;
+        padding: 0 12px;
+      }
+
+      .casos h2,
+      .podcasts h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+
+      #filtroCasos {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      .caso {
+        padding: 15px;
+      }
+
+      .caso h3 {
+        font-size: 18px;
+      }
+
+      .descricao-caso {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .episodio h4 {
+        font-size: 16px;
+      }
+
+      .fab-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+
+      .fab-menu a {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Botão flutuante -->
+  <div class="menu-fab" id="fab">
+    <button class="fab-button" onclick="toggleFab()">☰</button>
+    <div class="fab-menu">
+      <a href="index.html">Início</a>
+      <a href="https://wa.me/5562982809879" target="_blank" rel="noopener noreferrer">📱 WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Casos -->
+  <section class="casos">
+    <h2>Sentenças deferidas</h2>
+
+    <input type="text" id="filtroCasos" placeholder="Buscar sentenças..." aria-label="Buscar sentenças">
+
+    <div class="caso" tabindex="0" role="button" aria-expanded="false" aria-controls="desc1" onclick="toggleDescricao(this)" onkeydown="keyToggleDescricao(event, this)">
+      <h3>♦️ Ação de Divórcio com Guarda Compartilhada</h3>
+      <div class="descricao-caso" id="desc1">
+        Conseguimos homologar um divórcio litigioso com guarda compartilhada e pensão alimentícia proporcional à renda, preservando o melhor interesse da criança.
+      </div>
+    </div>
+
+    <div class="caso" tabindex="0" role="button" aria-expanded="false" aria-controls="desc2" onclick="toggleDescricao(this)" onkeydown="keyToggleDescricao(event, this)">
+      <h3>♦️ Cancelamento de Cobrança Indevida</h3>
+      <div class="descricao-caso" id="desc2">
+        Sentença favorável condenou empresa ao cancelamento de débito inexistente e pagamento de R$ 5.000,00 por danos morais.
+      </div>
+    </div>
+
+    <div class="caso" tabindex="0" role="button" aria-expanded="false" aria-controls="desc3" onclick="toggleDescricao(this)" onkeydown="keyToggleDescricao(event, this)">
+      <h3>♦️ Liberdade Provisória Concedida</h3>
+      <div class="descricao-caso" id="desc3">
+        Garantimos liberdade provisória com medidas cautelares, preservando os direitos do acusado.
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast Jurídico -->
+  <section class="podcasts">
+    <h2>🎥 Vídeos Jurídicos</h2>
+
+    <div class="episodio">
+      <h4>📌 Ep. 01 – Como funciona a guarda compartilhada?</h4>
+      <video controls>
+        <source src="videos/guarda-compartilhada.mp4" type="video/mp4" />
+        Seu navegador não suporta a reprodução de vídeo.
+      </video>
+    </div>
+
+    <div class="episodio">
+      <h4>📌 Ep. 02 – Seus direitos como consumidor</h4>
+      <video controls>
+        <source src="videos/direito-consumidor.mp4" type="video/mp4" />
+        Seu navegador não suporta a reprodução de vídeo.
+      </video>
+    </div>
+
+    <div class="episodio">
+      <h4>📌 Ep. 03 – Quando pedir Habeas Corpus?</h4>
+      <video controls>
+        <source src="videos/habeas-corpus.mp4" type="video/mp4" />
+        Seu navegador não suporta a reprodução de vídeo.
+      </video>
+    </div>
+  </section>
+
+  <script>
+    function toggleFab() {
+      document.getElementById("fab").classList.toggle("fab-open");
+    }
+
+    function toggleDescricao(element) {
+      const todosCasos = document.querySelectorAll('.caso');
+      todosCasos.forEach(caso => {
+        if (caso !== element) {
+          caso.classList.remove('selecionado');
+          const desc = caso.querySelector('.descricao-caso');
+          if(desc) {
+            desc.classList.remove('aberto');
+            caso.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+
+      element.classList.toggle('selecionado');
+      const descricao = element.querySelector('.descricao-caso');
+      if (descricao) {
+        descricao.classList.toggle('aberto');
+        const expanded = descricao.classList.contains('aberto');
+        element.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      }
+    }
+
+    function keyToggleDescricao(event, element) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleDescricao(element);
+      }
+    }
+
+    const filtroInput = document.getElementById('filtroCasos');
+    filtroInput.addEventListener('input', () => {
+      const termo = filtroInput.value.toLowerCase();
+      const casos = document.querySelectorAll('.caso');
+      casos.forEach(caso => {
+        const texto = caso.textContent.toLowerCase();
+        caso.style.display = texto.includes(termo) ? 'block' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
