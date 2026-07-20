@@ -36,6 +36,7 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 6px 18px rgba(0,0,0,.22);
+      /* proporção agradável para retrato */
       aspect-ratio: 7 / 10;
       width: 100%;
       height: auto;
@@ -64,7 +65,7 @@
       font-size: 1.06rem;
       line-height: 1.65;
       color: #2f2e2a;
-      text-align: left;
+      text-align: left; /* leitura melhor que 'justify' */
     }
 
     /* ===== Instagram ===== */
@@ -110,8 +111,10 @@
 
     /* ===== Celulares (até 600px) ===== */
     @media (max-width: 600px){
+      /* fundo não fixo e com cover para desempenho */
       body{ background-attachment: scroll; background-size: cover; }
 
+      /* card em coluna única */
       .perfil-advogado{
         grid-template-columns: 1fr;
         gap: 16px;
@@ -121,8 +124,15 @@
         border-radius: 12px;
       }
 
+      /* foto ocupa toda a largura e mantém proporção */
       .perfil-foto{ aspect-ratio: 4 / 5; border-radius: 10px; }
+      /* desativa efeito hover em telas touch */
+      @media (hover: none){
+        .perfil-foto img:last-child{ display:none; }
+        .perfil-foto img:first-child{ opacity:1 !important; }
+      }
 
+      /* tipografia mais enxuta e sem sombras */
       .perfil-texto h2{
         font-size: 1.35rem;
         line-height: 1.25;
@@ -138,15 +148,10 @@
 
       .instagram-link{ font-size: .98rem; }
 
+      /* FAB menor e mais afastado */
       .fab-button{ width: 50px; height: 50px; font-size: 22px; }
       .menu-fab{ right: 14px; bottom: 14px; }
       .fab-menu a{ padding: 9px 14px; font-size: .95rem; }
-    }
-
-    /* Desativa o hover em telas touch (qualquer largura) */
-    @media (hover: none){
-      .perfil-foto img:last-child{ display:none; }
-      .perfil-foto img:first-child{ opacity:1 !important; }
     }
   </style>
 </head>
@@ -154,20 +159,20 @@
 
   <!-- Perfil -->
   <section class="perfil-advogado">
-    <div class="perfil-foto" aria-label="Foto da Advogada com efeito hover">
-      <img src="gessica 2.jpg" alt="Dra. Gessica">
-      <img src="gessica 3.jpg" alt="Dra. Gessica (hover)">
+    <div class="perfil-foto" aria-label="Foto da Estagiária com efeito hover">
+      <img src="adriana.jpg" alt="Estagiária Gabriela Rocha da Silva">
+      <img src="adriana 1.jpg" alt="Estagiária Gabriela Rocha da Silva (hover)">
     </div>
 
     <div class="perfil-texto">
-      <h2>Dra. Géssica</h2>
-      <p>Advogada recém-formada, com experiência na elaboração de peças processuais e na realização de audiências.</p>
-      <p>Comprometida com a ética e o aprendizado contínuo, atua com dedicação para oferecer um atendimento jurídico personalizado e eficiente.</p>
-      <p>Disponível para atuar em diversas áreas do Direito, sempre com atenção às necessidades específicas de cada cliente.</p>
+      <h2>Adriana Matias</h2>
+      <p>Estagiária dedicada, com experiência em elaboração de peças processuais e atendimento ao cliente.</p>
+      <p>Atua no suporte jurídico com foco em triagem e orientação clara, contribuindo para a organização e eficiência do escritório.</p>
+      <p>Comprometida com o aprendizado contínuo e a excelência no atendimento, está sempre pronta para auxiliar em diferentes áreas do Direito.</p>
 
-      <a href="https://www.instagram.com/advgessicagoncalves?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="instagram-link" aria-label="Instagram da Dra. Gessica">
+      <a href="https://www.instagram.com/adrianamatiassouza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="instagram-link" aria-label="Instagram da SMS Advocacia">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 2.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4.75-.75a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0z"/></svg>
-        @advgessicagoncalves
+        @smsadvocaciaoficial
       </a>
     </div>
   </section>
