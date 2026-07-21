@@ -833,7 +833,7 @@ body::before {
   padding: 40px 20px;
   background: 
     linear-gradient(rgba(241, 223, 199, 0.6), rgba(209, 209, 209, 0.4)),
-    url('foto\ equipe..jpg') center/cover no-repeat;
+    url('foto\ equipe\ new.jpeg') center/cover no-repeat;
   text-align: center;
   color: #ffffff;
 }
@@ -1627,4 +1627,26 @@ footer a:hover {
   }
   .destaques .destaque h2 { font-size: clamp(14px, 5vw, 20px) !important; }
   .destaques .destaque p  { font-size: clamp(9px, 3.2vw, 11px) !important; }
+}
+
+.whatsapp-plantao{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:14px;
+  padding:11px 18px;
+  background:#918e7d;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  font-weight:700;
+  font-size:.98rem;
+  text-decoration:none;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
+  transition:transform .2s ease, background-color .2s ease;
+}
+
+.whatsapp-plantao:hover{
+  background:#7f7b69;
+  transform:translateY(-2px);
 }
